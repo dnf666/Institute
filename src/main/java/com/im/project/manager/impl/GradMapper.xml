@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.project.manager.GradMapper">
+	<resultMap id="BaseResultMap" type="com.im.project.model.Grad">
+		<id column="person_id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="picture" property="pictureId" jdbcType="VARCHAR" />
+		<result column="jianjie" property="jianjie" />
+		<result column="xibie" property="xibie" jdbcType="VARCHAR" />
+		<result column="zhiwu" property="zhiwu" jdbcType="VARCHAR" />
+		<result column="grade" property="grade" jdbcType="VARCHAR" />
+		<result column="whereabout" property="whereabout" jdbcType="VARCHAR" />
+		<result column="daoshi" property="daoshi" jdbcType="VARCHAR" />
+		<association property="picture" column="picture"
+			select="com.im.project.manager.PictureMapper.selectByPrimaryKey"
+			javaType="com.im.project.model.Picture" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		person_id,name,picture,jianjie,xibie,zhiwu,whereabout,grade,daoshi
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from person
+		where person_id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from person
+		where type=3 order by person_id desc 
+	</select>
+	<select id="findAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from person
+		where type=3 order by person_id desc limit #{pageNow} ,#{pageSize}
+	</select>
+
+	<select id="countRecords" resultType="java.lang.Integer">
+		select count(*) from person where type=3
+	</select>
+
+	<insert id="insert" parameterType="com.im.project.model.Grad">
+		insert into person (
+		person_id,name,picture,jianjie,xibie,zhiwu,whereabout,type,grade)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{pictureId,jdbcType=VARCHAR},
+		#{jianjie},#{xibie,jdbcType=VARCHAR},#{zhiwu,jdbcType=VARCHAR},#{whereabout,jdbcType=VARCHAR},3,#{grade})
+	</insert>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from person
+		where person_id = #{id,jdbcType=INTEGER}
+	</delete>
+	<update id="updateByPrimaryKey" parameterType="com.im.project.model.Grad">
+		update person
+		<set>
+			<if test='grade!= null and grade !=""'>
+				grade =#{grade,jdbcType=VARCHAR},
+			</if>
+			<if test='name != null and name!=""'>
+				name =#{name,jdbcType=VARCHAR},
+			</if>
+			<if test='pictureId!= null and pictureId !=""'>
+				picture =#{pictureId,jdbcType=VARCHAR},
+			</if>
+			<if test='jianjie!= null and jianjie !=""'>
+				jianjie =#{jianjie},
+			</if>
+			<if test='xibie!= null and xibie !=""'>
+				xibie =#{xibie,jdbcType=VARCHAR},
+			</if>
+			<if test='zhiwu!= null and zhiwu !=""'>
+				zhiwu =#{zhiwu,jdbcType=VARCHAR},
+			</if>
+			<if test='whereabout!= null and whereabout !=""'>
+				whereabout =#{whereabout,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where person_id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<!--///新加的研究生-->
+	<select id="selectAllPostGrads" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from person
+		where type=4 order by person_id desc
+	</select>
+	<insert id="insertPostGrad" parameterType="com.im.project.model.Grad">
+		insert into person (
+		person_id,name,picture,jianjie,xibie,zhiwu,whereabout,type,grade,daoshi)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{pictureId,jdbcType=VARCHAR},
+		#{jianjie},#{xibie,jdbcType=VARCHAR},#{zhiwu,jdbcType=VARCHAR},#{whereabout,jdbcType=VARCHAR},4,#{grade},#{daoshi})
+	</insert>
+	<delete id="deletePostGradByPrimaryKey" parameterType="java.lang.Integer">
+		delete from person
+		where person_id = #{id,jdbcType=INTEGER}
+	</delete>
+	<update id="updatePostGradByPrimaryKey" parameterType="com.im.project.model.Grad">
+		update person
+		<set>
+			<if test='grade!= null and grade !=""'>
+				grade =#{grade,jdbcType=VARCHAR},
+			</if>
+			<if test='name != null and name!=""'>
+				name =#{name,jdbcType=VARCHAR},
+			</if>
+			<if test='pictureId!= null and pictureId !=""'>
+				picture =#{pictureId,jdbcType=VARCHAR},
+			</if>
+			<if test='jianjie!= null and jianjie !=""'>
+				jianjie =#{jianjie},
+			</if>
+			<if test='xibie!= null and xibie !=""'>
+				xibie =#{xibie,jdbcType=VARCHAR},
+			</if>
+			<if test='zhiwu!= null and zhiwu !=""'>
+				zhiwu =#{zhiwu,jdbcType=VARCHAR},
+			</if>
+			<if test='whereabout!= null and whereabout !=""'>
+				whereabout =#{whereabout,jdbcType=VARCHAR},
+			</if>
+			<if test='daoshi!= null and daoshi !=""'>
+				daoshi =#{daoshi,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where person_id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

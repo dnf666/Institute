@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.project.manager.NewsMapper">
+	<resultMap id="BaseResultMap" type="com.im.project.model.News">
+		<id column="articleNewsId" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="cont" property="content" />
+		<result column="picture" property="pictureId" jdbcType="INTEGER" />
+		<result column="date" property="date" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="releaser" property="releaser" jdbcType="VARCHAR" />
+		<result column="summary" property="summary" jdbcType="VARCHAR" />
+		<association property="picture" column="picture" select="com.im.project.manager.PictureMapper.selectByPrimaryKey" 
+			javaType="com.im.project.model.Picture" /> 
+	</resultMap>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		articleNewsId,title,cont,releaser,date,summary,picture
+		from
+		article_news
+		where type=1 and articleNewsId = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectNewsIndex" resultMap="BaseResultMap">
+		select
+		articleNewsId,title,author,date,summary,releaser,picture
+		from article_news
+		where type=1 order by articleNewsId desc limit 0,2
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap" >
+		select 
+		articleNewsId,date,releaser,picture,title,summary
+		from article_news
+		where type=1
+		order by articleNewsId desc 
+	</select>
+	
+	<select id="findAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select 
+		articleNewsId,author,date,summary,releaser,picture,title
+		from article_news
+		where type=1
+		order by articleNewsId desc limit #{pageNow} ,#{pageSize}
+	</select>
+	<insert id="insert" parameterType="com.im.project.model.News">
+		insert into article_news
+		(articleNewsId,title,cont,date,author,releaser,summary,type,picture)
+		values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content},
+		#{date,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+		#{releaser,jdbcType=VARCHAR},
+		#{summary,jdbcType=VARCHAR},1,#{pictureId,jdbcType=INTEGER})
+	</insert>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		article_news
+		where articleNewsId = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<update id="updateByPrimaryKey" parameterType="com.im.project.model.News">
+		update article_news
+		<set>
+			<if test='title != null and title!=""'>
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test='content != null and content!=""'>
+				cont = #{content},
+			</if>
+			<if test='author != null and author!=""'>
+				author = #{author,jdbcType=VARCHAR},
+			</if>
+			<if test='releaser != null and releaser!=""'>
+				releaser = #{releaser,jdbcType=VARCHAR},
+			</if>
+			<if test='summary != null and summary!=""'>
+				summary = #{summary,jdbcType=VARCHAR},
+			</if>
+			<if test='pictureId != null and pictureId!=""'>
+				picture = #{pictureId,jdbcType=INTEGER}
+			</if>
+		</set>
+		where articleNewsId = #{id,jdbcType=INTEGER}
+	</update>
+
+
+</mapper>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.project.manager.MemberMapper" >
+  <resultMap id="BaseResultMap" type="com.im.project.model.Member" >
+    <id column="person_id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="picture" property="pictureId" jdbcType="INTEGER" />
+    <result column="jianjie" property="jianjie" />
+    <result column="xibie" property="xibie" jdbcType="VARCHAR" />
+    <result column="zhiwu" property="zhiwu" jdbcType="VARCHAR" />
+      <result column="grade" property="grade" jdbcType="VARCHAR"/>
+   <association property="picture" column="picture" select="com.im.project.manager.PictureMapper.selectByPrimaryKey" javaType="com.im.project.model.Picture"/>
+
+
+
+
+  </resultMap>
+    <resultMap id="AllMemberMap" type="com.im.project.model.Member" >
+        <id column="person_id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="picture" property="pictureId" jdbcType="VARCHAR" />
+        <result column="xibie" property="xibie" jdbcType="VARCHAR" />
+        <result column="zhiwu" property="zhiwu" jdbcType="VARCHAR" />
+        <result column="zhicheng" property="zhicheng" jdbcType="VARCHAR"/>
+        <result column="grade" property="grade" jdbcType="VARCHAR"/>
+        <association property="picture" column="picture" select="com.im.project.manager.PictureMapper.selectByPrimaryKey" javaType="com.im.project.model.Picture"/>
+    </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    person_id, name, zhiwu,picture,jianjie,xibie,grade
+  </sql>
+    <sql id="AllMember">
+       person_id,name,picture,xibie, zhiwu,zhicheng,grade
+    </sql>
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select  
+      <include refid="Base_Column_List" />
+    from person
+    where person_id = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select
+   <include refid="Base_Column_List" />
+   from person
+  where type=2 order by person_id desc 
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+  select
+   <include refid="Base_Column_List" />
+   from person
+  where type=2 order by person_id desc limit  #{pageNow} ,#{pageSize}
+  </select>
+   <select id="countRecords" resultType="java.lang.Integer">
+  select count(*) from person where type=2 or type =3
+ </select>
+  <insert id="insert" parameterType="com.im.project.model.Member" >
+    insert into person ( person_id,name,picture,jianjie,xibie,zhiwu,type,grade)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pictureId},
+    #{jianjie},#{xibie,jdbcType=VARCHAR},#{zhiwu,jdbcType=VARCHAR},2,#{grade,jdbcType=VARCHAR})
+  </insert>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from person
+    where person_id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKey" parameterType="com.im.project.model.Member" >
+    update person
+    <set >
+      <if test='name != null and name!=""' >
+        name =#{name,jdbcType=VARCHAR},
+      </if>
+      <if test='pictureId!= null and pictureId !=""' >
+        picture =#{pictureId},
+      </if>
+      <if test='jianjie!= null and jianjie !=""'  >
+        jianjie =#{jianjie},
+      </if>
+       <if test='xibie!= null and xibie !=""' >
+        xibie =#{xibie,jdbcType=VARCHAR},
+      </if>
+       <if test='zhiwu!= null and zhiwu !=""' >
+        zhiwu =#{zhiwu,jdbcType=VARCHAR}
+      </if>
+        <if test='grade!= null and grade !=""' >
+            grade =#{grade,jdbcType=VARCHAR}
+        </if>
+    </set>
+    where person_id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <!--\\\\\\\\\\\\\\\\\\\\\\\\-->
+<select id="selectAllMembers" resultMap="AllMemberMap" parameterType="java.util.HashMap">
+    select <include refid="AllMember"/> from person where type=2 or type=3 order by person_id DESC limit  #{pageNow},#{pageSize}
+ </select>
+    <select id="selectAllPostGrads" resultMap="AllMemberMap" parameterType="java.util.HashMap">
+        select <include refid="AllMember"/> from person where type=4 order by person_id DESC limit  #{pageNow},#{pageSize}
+    </select>
+</mapper>

@@ -1,0 +1,283 @@
+/*body{
+	margin: 0px auto;
+	padding: 0px;
+}
+#content{
+	margin: 0px auto;
+	padding: 0px;
+	width: 900px;
+	height: 620px;
+}
+
+#list{
+	padding: 0px;
+	margin: 0px;
+}
+#list li{
+	list-style-type: none;
+}
+.info{
+	position: relative;
+	float: left;
+	margin:20px 50px;
+	cursor:pointer;
+	padding: 0px;
+}
+}
+#list li a{
+	position: relative;
+}
+.info img{
+	width: 230px;
+	height: 260px;
+	zoom:0.8;	
+	margin: 0px;
+	border: 10px solid #497D92;
+}	
+.name{
+	margin-top: 15px;
+	text-align: center;
+	color: #497D92;
+	font-family: '华文新楷';
+}
+#next{
+	height: 40px;
+}
+#changepage{
+	width: 1200px;
+	background-color: #54BFBC;
+	margin: 0px auto;
+	line-height: 40px;
+	text-align: center;
+	padding: 0px;
+}
+#changepage span{
+	margin: 20px;
+	color: white;
+	font-size: 13px;
+}
+#changepage a{
+	text-decoration: none;
+	font-size: 13px;
+}
+#changepage a:visited{
+	color: white;
+}
+#changepage a:link{
+	color: white;
+}
+*/
+body{
+	margin: 0px auto;
+
+}
+#shadow{
+	position: relative;
+	width: 1000px;
+	height: 900px;
+	background-color: #AAABAB;
+	margin: 0px auto;
+}
+#box{
+	position: relative;
+	left: -10px;
+	top: -10px;
+	width: 1000px;
+	height: 850px;
+	margin: 0px auto;
+}
+#head{
+	margin-top: 20px;
+	height: 40px;
+	background-color: #00C2BD;
+}
+#grage{
+	color: white;
+	margin-left: 20px;
+	line-height: 40px;
+}
+#content{
+	top: 0px;
+	padding: 0px;
+	margin: 0px;
+	position: relative;;
+	width: 1000px;
+	height: 810px;
+	background-color:#F9F9F9;
+	position: relative;
+}
+#top{
+	width: 1000px;
+	height: 50px;
+}
+#shadow1{
+	width: 800px;
+	height: 300px;
+	background-color: #AAABAB;
+	position: relative;
+	margin: 0px auto;
+}
+#first{
+	position: relative;
+	left: -10px;
+	top: -10px;
+	width: 100%;
+	height: 300px;
+	background-color:#DEDFDF;
+	z-index: 1001;
+	margin-bottom: 50px;
+}
+#firsthead{
+/*	line-height: 50px;*/
+	margin-bottom: 20px;
+	padding-top: 10px;
+}
+.divited{
+	margin-left: 20px;
+	height: 50px;
+	color:  #606060;
+	font-size: 18px;
+	margin-top: 10px;
+}
+.list ul{
+	margin: 0px auto;
+	padding: 0px;
+	height: 230px;
+	width: 700px;
+}
+.list ul a:visited{
+	color:  #606060;
+}
+.list ul  li{
+	list-style-type: none;
+	float: left;
+	width: 160px;
+	height: 200px;
+	margin:15px 35px;
+	background-color: white;
+}
+.man{
+	height: 200px;
+	overflow: hidden;
+	cursor:pointer;
+}
+.photo{
+	padding-top: 5px;
+	position: relative;
+	text-align: center;
+	height: 130px;
+}
+.photo img{
+	width: 125px;
+	height: 160px;
+	zoom: 0.8;
+}
+.name{
+	font-size: 12px;
+	padding-left: 5px;
+	color:  #606060;
+	margin-bottom: 5px;
+}
+.dection{
+	font-size: 12px;
+	padding-left: 5px;
+	color:  #606060;
+	margin: 0px;
+	margin-bottom: 5px;
+}
+.profession{
+	font-size: 12px;
+	padding-left: 5px;
+	color:  #606060;
+	width: 160px;
+	margin: 0px;
+}
+#second{
+	position: relative;
+	left: -10px;
+	top: -10px;
+	width: 100%;
+	height: 300px;
+	background-color:#DEDFDF;
+	z-index: 1001;
+	margin-bottom: 50px;
+}
+#shadow2{
+	width: 800px;
+	height: 300px;
+	background-color: #AAABAB;
+	position: relative;
+	margin: 0px auto;
+}
+
+#shadow2{
+	width: 800px;
+	height: 300px;
+	background-color: #AAABAB;
+	position: relative;
+	margin: 0px auto;
+	margin-bottom: 60px;
+}
+#first2{
+	position: relative;
+	left: -10px;
+	top: -10px;
+	width: 100%;
+	height: 300px;
+	background-color:#DEDFDF;
+	z-index: 1001;
+	margin-bottom: 60px;
+}
+#firsthead2{
+/*	line-height: 50px;*/
+	margin-bottom: 20px;
+	padding-top: 10px;
+}
+
+#depart{
+	height: 60px;
+}
+#adepart{
+	height: 50px;
+	background-color:white;
+}
+#next{
+	width: 1000px;
+	height: 50px;
+	background-color: #00C2BD;
+	margin: 0px auto;
+
+}
+#next{
+	height: 40px;
+}
+#changepage{
+	width: 1000px;
+	background-color: #54BFBC;
+	margin: 0px auto;
+	line-height: 40px;
+	text-align: center;
+	padding: 0px;
+}
+#changepage span{
+	margin: 20px;
+	color: white;
+	font-size: 13px;
+}
+#changepage a{
+	text-decoration: none;
+	font-size: 13px;
+}
+#changepage a:visited{
+	color: white;
+}
+#changepage a:link{
+	color: white;
+}
+
+#beforepage{
+	cursor: pointer;
+}
+#nextpage{
+	cursor: pointer;
+}

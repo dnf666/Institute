@@ -1,0 +1,90 @@
+body{
+	margin: 0px auto;
+}
+
+#bottom-box{
+	position: relative;
+	margin: 0px auto;
+	width: 1200px;
+	height: 100px;
+	background-color: #497D92;
+}
+#bottom-box table{
+	position: relative;
+	width: 100%;
+	height: 250px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 13px;
+}
+#bottom-box td{
+	display:table-cell;
+	vertical-align:middle;
+}
+#logo{
+	position:absolute;
+	left:10%;
+	top: 22%;
+	vertical-align: middle;
+}
+#logo img{
+	width: 120px;
+}
+#foot-list{
+	position: absolute;
+	color: white;
+	font-size: 13px;
+	height: 200px;
+	left: 50%;
+	top: 15%;
+
+}
+#foot-list img{
+	vertical-align: middle;
+	margin-right: 15px;
+	margin-left: 25px;
+	width: 25px
+}
+#foot-list table{
+	height: 80px;
+	text-align: center;
+}
+#foot-list table tr{
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+}
+#foot-list a{
+	text-decoration: none;
+	font-size: 12px;
+	color:white;
+}
+#foot-list a:visited {color:white;}
+#foot-list a:hover{color:#92B8C9 }
+
+
+
+#tbottom{
+	position: relative;
+	margin: 0px auto;
+	width: 1200px;
+	height: 50px;
+	background-color: #778C92;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-size: 12px;
+}
+#Annotations{
+	position: relative;
+	vertical-align: middle;
+}
+#Annotations span{
+
+}
+
+
+.move{
+	position: relative;
+	left: 50px;
+}

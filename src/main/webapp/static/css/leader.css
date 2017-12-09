@@ -1,0 +1,23 @@
+body{
+	margin: 0px;
+
+}
+.content{
+	position:relative;
+}
+.box{
+	width: 900px;
+	margin: 0px auto;
+	height:100%;
+}
+.card{
+	margin: 50px auto;
+}
+.card-img-top{
+	width:260px;
+	height: 200px;
+	border-radius:10px;
+}
+/*.card:nth-child(1){
+	margin-right: 0px;
+}*/

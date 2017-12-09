@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.im.project.manager.PictureMapper">
+	<resultMap id="BaseResultMap" type="com.im.project.model.Picture">
+		<id column="pic_id" property="id" jdbcType="VARCHAR" />
+		<result column="realPath" property="realPath" jdbcType="VARCHAR" />
+		<result column="link" property="link" jdbcType="VARCHAR" />
+		<result column="date" property="date" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		pic_id,link,date,type
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from picture
+		where pic_id = #{id}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from picture where pic_id=#{id}
+	</delete>
+	
+	<insert id="insert" parameterType="com.im.project.model.Picture">
+		insert into picture (pic_id,link,date,type,realPath)
+		values (#{id},#{link,jdbcType=VARCHAR},#{date,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},
+				#{realPath,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateByPrimaryKey" parameterType="com.im.project.model.Picture">
+		update picture
+		<set>
+		<if test='link != null and link!=""'>link=#{link,jdbcType=VARCHAR},</if>
+		<if test='realPath != null and realPath!=""'>link=#{link,jdbcType=VARCHAR},</if>
+		</set>
+		where
+		pic_id = #{id}
+	</update>
+	<select id="getLogosUrl" resultType="java.lang.String">
+	select link from picture where type="logo"
+	</select>
+	<select id="getLogos" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+	from picture where type="logo"
+	</select>
+	<select id="getPapers" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+	 from picture where type="paper"
+	</select>
+	<select id="getPapersUrl" resultType="java.lang.String">
+	select link from picture where type="paper"
+	</select>
+</mapper>

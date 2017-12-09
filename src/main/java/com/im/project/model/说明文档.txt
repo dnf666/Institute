@@ -1,0 +1,22 @@
+ table article-news
+news type=1
+article type=2
+
+table project
+doing project    type=1
+complete project type=2
+
+table picture
+logo 	type=1
+news 	type=2
+person 	type=3
+department type = 4
+article type = 5
+
+table person 
+leader	type=1
+member	type=2
+grad	type=3
+
+ExtraMessage指的是电话和邮箱
+

@@ -1,0 +1,80 @@
+body{
+	margin: 0px auto;
+}
+#head_{
+	margin-top: 0px;
+	width: 1000px;
+	text-align: left;
+}
+#content{
+	margin:0px auto;
+	width: 1000px;
+}
+#content1{
+	height: 250px;
+}
+#content1 ul{
+	margin: 0px;
+	padding: 0px;
+}
+#completed{
+	font-size: 15px;
+}
+#completed li{
+	background-color:#CAD6DB;	
+	color:#606060;
+}
+.completed li{
+	float: left;
+	list-style-type: none;
+	margin-right: 5px;
+
+	padding: 5px 10px;
+	text-align: center;
+}
+.completed li:nth-child(1){
+	width: 200px;
+}
+.completed li:nth-child(2){
+	width: 140px;
+}
+.completed li:nth-child(3){
+	width: 420px;
+}
+.completed li:nth-child(4){
+	width: 220px;
+}
+#info li{
+	margin-top: 30px;
+	background-color: white;
+	color: #606060;
+	height: 31px;
+}
+#info li:nth-child(1){
+	color: #497D92;	
+}
+#info li:nth-child(4){
+	color: #497D92;	
+}
+.morecontent{
+	height: 40px;
+	text-align: right;
+	margin-bottom: 10px;
+	line-height: 40px;
+	padding-right: 20px;
+}
+.morecontent a{
+	text-decoration: none;
+	font-family: cursive;
+	font-size: 16px;
+}
+.morecontent a:visited{
+	color: #497D92;
+}
+.morecontent a:hover{
+	color: #497D92;
+}
+
+.morecontent a:link{
+	color:  #497D92;
+}
